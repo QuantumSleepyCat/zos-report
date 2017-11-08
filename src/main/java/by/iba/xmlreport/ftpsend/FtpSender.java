@@ -3,10 +3,7 @@ package by.iba.xmlreport.ftpsend;
 import org.apache.commons.net.ftp.FTPClient;
 import org.w3c.dom.Document;
 
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
@@ -32,6 +29,7 @@ public class FtpSender {
             File file = new File("report");
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(file);
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(source, result);
             fis = new FileInputStream(file);
 

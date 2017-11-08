@@ -28,25 +28,83 @@
 
     <form:form action="sendtoftp" method="post" modelAttribute="pageInfo">
         <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Name</span>
-            <form:input path="name" type="text" class="form-control" name="name"/>
+            <span class="input-group-addon">Application name</span>
+            <form:input path="applicationName" type="text" class="form-control" name="name"/>
         </div>
         <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Method</span>
-            <form:input path="method" type="text" class="form-control" name="method"/>
+            <span class="input-group-addon">Project/CR id</span>
+            <form:input path="prodect_CR_ID" type="text" class="form-control" name="prodect_CR_ID"/>
         </div>
         <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">Action</span>
-            <form:input path="action" type="text" class="form-control" name="action"/>
+            <span class="input-group-addon">Requester</span>
+            <form:input path="requester" type="text" class="form-control" name="requester"/>
         </div>
         <div class="input-group" style="margin-bottom: 10px;">
-            <span class="input-group-addon">File</span>
-            <form:input path="file" type="text" class="form-control" name="file"/>
+            <span class="input-group-addon">Transfer date</span>
+            <form:input path="transferDate" type="text" class="form-control" name="transferDate"/>
         </div>
-        <input class="btn btn-primary" type="submit" value="Send"/>
+        <div class="input-group" style="margin-bottom: 10px;">
+            <span class="input-group-addon">Region</span>
+            <form:input path="region" type="text" class="form-control" name="region"/>
+        </div>
+        <details>
+            <summary>Promote Overlays</summary>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item name</span>
+                <form:input path="items[0].name" type="text" class="form-control" name="item-name" value="Promote Overlays"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item value</span>
+                <form:input path="items[0].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item remark</span>
+                <form:input path="items[0].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[0].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[0].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[0].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
+            </div>
+        </details>
+        <details>
+            <summary>Promote PLI sources (CEMA)</summary>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item name</span>
+                <form:input path="items[1].name" type="text" class="form-control" name="item-name" value="Promote PLI sources (CEMA)"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item value</span>
+                <form:input path="items[1].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Item remark</span>
+                <form:input path="items[1].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[1].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[1].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
+            </div>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Member</span>
+                <form:input path="items[1].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
+            </div>
+        </details>
+        <input class="btn btn-primary" style="bottom: 10px; right: 10px; position: absolute;" type="submit" value="Send"/>
     </form:form>
 
-    <a class="btn btn-default" href="/sendtoftp" role="button">Send</a>
+    <!--<a class="btn btn-default" href="/sendtoftp" role="button">Send</a>-->
 
 </div>
 

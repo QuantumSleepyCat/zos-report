@@ -29,7 +29,7 @@ public class SetInfoController {
     }
     @PostMapping(value = "/sendtoftp")
     public ModelAndView sendToFtpZos(ModelAndView model, @ModelAttribute PageInfoModel pageInfo) throws InterruptedException {
-        System.out.println(pageInfo.getAction());
+        //System.out.println(pageInfo.getAction());
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Document> responseEntity=null;
         responseEntity=restTemplate.postForEntity("http://localhost:9081/rest/getinfo",
