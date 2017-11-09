@@ -3,7 +3,9 @@ package by.iba.xmlreport.controllers;
 
 
 import by.iba.xmlreport.ftpsend.FtpSender;
+import by.iba.xmlreport.model.DTO.JCLAndXMLDoc;
 import by.iba.xmlreport.model.PageInfoModel;
+import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,13 +33,14 @@ public class SetInfoController {
     public ModelAndView sendToFtpZos(ModelAndView model, @ModelAttribute PageInfoModel pageInfo) throws InterruptedException {
         //System.out.println(pageInfo.getAction());
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Document> responseEntity=null;
+        ResponseEntity<JCLAndXMLDoc> responseEntity=null;
         responseEntity=restTemplate.postForEntity("http://localhost:9081/rest/getinfo",
-                pageInfo,Document.class);
+                pageInfo,JCLAndXMLDoc.class);
         Thread.sleep(1000);
         FtpSender ftpSender=new FtpSender();
        //System.out.println();
-        ftpSender.sendFileToZos(responseEntity.getBody());
+        ftpSender.sendFileToZos(responseEntity.getBody().getXmlDocument(),
+                new CreatingJCLFile().createJclFile(responseEntity.getBody().getJclText()));
         model.setViewName("redirect:/");
         return model;
     }

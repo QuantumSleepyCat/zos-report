@@ -26,7 +26,7 @@
 
 <div style="width: 70%;left:15%;position: relative;padding: 100px;border: 1px solid;">
 
-    <form:form action="sendtoftp" method="post" modelAttribute="pageInfo">
+    <form:form action="sendtoftp" method="post" modelAttribute="pageInfo" id="mainForm">
         <div class="input-group" style="margin-bottom: 10px;">
             <span class="input-group-addon">Application name</span>
             <form:input path="applicationName" type="text" class="form-control" name="name"/>
@@ -48,10 +48,10 @@
             <form:input path="region" type="text" class="form-control" name="region"/>
         </div>
         <details>
-            <summary>Promote Overlays</summary>
+            <summary>Item for promote</summary>
             <div class="input-group" style="margin-bottom: 10px;">
                 <span class="input-group-addon">Item name</span>
-                <form:input path="items[0].name" type="text" class="form-control" name="item-name" value="Promote Overlays"/>
+                <form:input path="items[0].name" type="text" class="form-control" name="item-name"/>
             </div>
             <div class="input-group" style="margin-bottom: 10px;">
                 <span class="input-group-addon">Item value</span>
@@ -73,8 +73,8 @@
                 <span class="input-group-addon">Member</span>
                 <form:input path="items[0].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
             </div>
-        </details>
-        <details>
+        </details><%--
+      <details>
             <summary>Promote PLI sources (CEMA)</summary>
             <div class="input-group" style="margin-bottom: 10px;">
                 <span class="input-group-addon">Item name</span>
@@ -100,14 +100,45 @@
                 <span class="input-group-addon">Member</span>
                 <form:input path="items[1].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
             </div>
-        </details>
+        </details> --%>
         <input class="btn btn-primary" style="bottom: 10px; right: 10px; position: absolute;" type="submit" value="Send"/>
     </form:form>
-
+    <input class="btn btn-success btn-sm" type="button" value="New Item" id="addfields"/>
     <!--<a class="btn btn-default" href="/sendtoftp" role="button">Send</a>-->
 
 </div>
+<%--<script>
+    function addfields() {
+        var p = d.createElement('details');
+        p.innerHTML='<summary>Promote Overlays</summary>\n' +
+            '            <div class="input-group" style="margin-bottom: 10px;">\n' +
+            '                <span class="input-group-addon">Item name</span>\n' +
+            '                <form:input path="items[0].name" type="text" class="form-control" name="item-name" value="Promote Overlays"/>\n' +
+            '            </div>\n' +
+            '            <div class="input-group" style="margin-bottom: 10px;">\n' +
+            '                <span class="input-group-addon">Item value</span>\n' +
+            '                <form:input path="items[0].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>\n' +
+            '            </div>\n' +
+            '            <div class="input-group" style="margin-bottom: 10px;">\n' +
+            '                <span class="input-group-addon">Item remark</span>\n' +
+            '                <form:input path="items[0].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>\n' +
+            '            </div>\n' +
+            '            <div class="input-group" style="margin-bottom: 10px;">\n' +
+            '                <span class="input-group-addon">Member</span>\n' +
+            '                <form:input path="items[0].dataSets[0].members[0]" type="text" class="form-control" name="member"/>\n' +
+            '            </div>';
 
+        newFields.appendChild(p);
+        return false;
+    }
+    var d = document,
+        myForm = d.getElementById('mainForm'),
+        newFields = myForm.querySelector('#new_fields'),
+        butAdd = d.getElementById('addfields'),
+        countMain=0;
+    butAdd.addEventListener('click', addfields, false);
+</script>--%>
+<script src="/resources/addnew.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>

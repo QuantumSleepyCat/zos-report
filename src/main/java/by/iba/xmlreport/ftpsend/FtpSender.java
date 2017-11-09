@@ -15,25 +15,31 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 public class FtpSender {
-    public boolean sendFileToZos(Document document)
+    public boolean sendFileToZos(Document document, File jclFile)
     {
         FTPClient client = new FTPClient();
         FileInputStream fis = null;
-
+        FileInputStream fisForJCL = null;
         try {
             client.connect("172.20.2.116");
             client.login("user06a", "user06a");
-            String filename = "report";
+
+            String filename = "xml.data.txt";
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();
-            File file = new File("report");
+            File file = new File(filename);
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(file);
+            
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(source, result);
             fis = new FileInputStream(file);
 
-            boolean  done= client.storeFile(filename, fis);
+            boolean  done= client.storeFile("xml.data", fis);
+            System.out.println(done);
+            client.site("filetype=jes");
+            fisForJCL = new FileInputStream(jclFile);
+            done= client.storeFile("xml.jcl", fisForJCL);
             System.out.println(done);
             client.logout();
             return done;
@@ -47,6 +53,9 @@ public class FtpSender {
             try {
                 if (fis != null) {
                     fis.close();
+                }
+                if (fisForJCL != null) {
+                    fisForJCL.close();
                 }
                 client.disconnect();
             } catch (IOException e) {
