@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
           crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="/resources/css/formStyle.css"/>
 </head>
 <body>
-<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse" style="width: 70%;left:15%;">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,7 +26,7 @@
     </div>
 </nav>
 
-<div style="width: 70%;left:15%;position: relative;padding: 100px;border: 1px solid;">
+<div id="input_form">
 
     <form:form action="sendtoftp" method="post" modelAttribute="pageInfo" id="mainForm">
         <div class="input-group" style="margin-bottom: 10px;">
@@ -47,65 +49,76 @@
             <span class="input-group-addon">Region</span>
             <form:input path="region" type="text" class="form-control" name="region"/>
         </div>
+        <%--  <details>
+              <summary>Item for promote</summary>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item name</span>
+                  <form:input path="items[0].name" type="text" class="form-control" name="item-name"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item value</span>
+                  <form:input path="items[0].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item remark</span>
+                  <form:input path="items[0].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[0].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[0].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[0].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
+              </div>
         <details>
-            <summary>Item for promote</summary>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item name</span>
-                <form:input path="items[0].name" type="text" class="form-control" name="item-name"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item value</span>
-                <form:input path="items[0].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item remark</span>
-                <form:input path="items[0].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[0].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[0].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[0].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
-            </div>
-        </details><%--
-      <details>
-            <summary>Promote PLI sources (CEMA)</summary>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item name</span>
-                <form:input path="items[1].name" type="text" class="form-control" name="item-name" value="Promote PLI sources (CEMA)"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item value</span>
-                <form:input path="items[1].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Item remark</span>
-                <form:input path="items[1].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[1].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[1].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
-            </div>
-            <div class="input-group" style="margin-bottom: 10px;">
-                <span class="input-group-addon">Member</span>
-                <form:input path="items[1].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
-            </div>
-        </details> --%>
+          </details><%--
+              <summary>Promote PLI sources (CEMA)</summary>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item name</span>
+                  <form:input path="items[1].name" type="text" class="form-control" name="item-name" value="Promote PLI sources (CEMA)"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item value</span>
+                  <form:input path="items[1].dataSets[0].itemValue" type="text" class="form-control" name="itemValue"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Item remark</span>
+                  <form:input path="items[1].dataSets[0].itemRemark" type="text" class="form-control" name="itemRemark"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[1].dataSets[0].members[0]" type="text" class="form-control" name="member"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[1].dataSets[0].members[1]" type="text" class="form-control" name="member"/>
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                  <span class="input-group-addon">Member</span>
+                  <form:input path="items[1].dataSets[0].members[2]" type="text" class="form-control" name="member"/>
+              </div>
+          </details> --%>
         <input class="btn btn-primary" style="bottom: 10px; right: 10px; position: absolute;" type="submit" value="Send"/>
     </form:form>
-    <input class="btn btn-success btn-sm" type="button" value="New Item" id="addfields"/>
+
     <!--<a class="btn btn-default" href="/sendtoftp" role="button">Send</a>-->
 
+</div>
+
+<div class="add_options">
+    <input id="nitems" type="number" class="form-control" placeholder="Number of data">
+    <input id="nmembers" type="number" class="form-control" placeholder="Number of members">
+    <input class="btn btn-success btn-sm" type="button" value="New Item" id="addfields"/>
+</div>
+<div class="add_options" style="top: 20px;">
+    <input type="text" class="form-control" placeholder="Server..." value="${server}">
+    <input  type="text" class="form-control" placeholder="User..." value="${username}">
+    <input  type="password" class="form-control" placeholder="Password..." value="${pass}">
 </div>
 <%--<script>
     function addfields() {

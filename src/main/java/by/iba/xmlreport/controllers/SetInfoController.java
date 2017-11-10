@@ -9,10 +9,7 @@ import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
@@ -31,10 +28,11 @@ public class SetInfoController {
     }
     @PostMapping(value = "/sendtoftp")
     public ModelAndView sendToFtpZos(ModelAndView model, @ModelAttribute PageInfoModel pageInfo) throws InterruptedException {
-        //System.out.println(pageInfo.getAction());
+       //System.out.println(username);
+        //model.getModelMap().get("username");
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<JCLAndXMLDoc> responseEntity=null;
-        responseEntity=restTemplate.postForEntity("http://localhost:9081/rest/getinfo",
+        responseEntity=restTemplate.postForEntity("http://xml-creator-for-zos.eu-gb.mybluemix.net/rest/getinfo",
                 pageInfo,JCLAndXMLDoc.class);
         Thread.sleep(1000);
         FtpSender ftpSender=new FtpSender();

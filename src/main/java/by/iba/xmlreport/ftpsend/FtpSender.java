@@ -30,7 +30,7 @@ public class FtpSender {
             File file = new File(filename);
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(file);
-            
+
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(source, result);
             fis = new FileInputStream(file);
