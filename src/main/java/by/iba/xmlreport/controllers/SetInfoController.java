@@ -6,6 +6,7 @@ import by.iba.xmlreport.ftpsend.FtpSender;
 import by.iba.xmlreport.model.DTO.JCLAndXMLDoc;
 import by.iba.xmlreport.model.PageInfoModel;
 import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
+import by.iba.xmlreport.model.sendinfo.SendInfo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class SetInfoController {
         model.addAttribute("pageInfo",new PageInfoModel());
         return "index";
     }
-    @PostMapping(value = "/sendtoftp")
+   /* @PostMapping(value = "/sendtoftp")
     public ModelAndView sendToFtpZos(ModelAndView model, @ModelAttribute PageInfoModel pageInfo) throws InterruptedException {
        //System.out.println(username);
         //model.getModelMap().get("username");
@@ -39,6 +40,19 @@ public class SetInfoController {
        //System.out.println();
         ftpSender.sendFileToZos(responseEntity.getBody().getXmlDocument(),
                 new CreatingJCLFile().createJclFile(responseEntity.getBody().getJclText()));
+        model.setViewName("redirect:/");
+        return model;
+    }*/
+
+    @PostMapping(value = "/sendtoftp")
+    public ModelAndView sendToFtpZos(ModelAndView model, @ModelAttribute PageInfoModel pageInfo) throws InterruptedException {
+        //System.out.println(username);
+        //model.getModelMap().get("username");
+        //pageInfo.setSendInfo(new SendInfo(username,pass,server,cl_email));
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<JCLAndXMLDoc> responseEntity=null;
+        responseEntity=restTemplate.postForEntity("http://xml-creator-for-zos.eu-gb.mybluemix.net/rest/getinfo",
+                pageInfo,JCLAndXMLDoc.class);
         model.setViewName("redirect:/");
         return model;
     }

@@ -27,4 +27,14 @@ public class Item {
     public void setDataSets(List<DataSet> dataSets) {
         this.dataSets = dataSets;
     }
+
+    @Override
+    public int hashCode() {
+        int code = (int) (name.length()+(Math.random()*233+10));
+        for(DataSet dataSet : dataSets)
+        {
+            code+=dataSet.hashCode()*Math.random()*233+545;
+        }
+        return code;
+    }
 }

@@ -25,10 +25,10 @@
         </ul>
     </div>
 </nav>
-
+<form:form action="sendtoftp" method="post" modelAttribute="pageInfo" id="mainForm">
 <div id="input_form">
 
-    <form:form action="sendtoftp" method="post" modelAttribute="pageInfo" id="mainForm">
+
         <div class="input-group" style="margin-bottom: 10px;">
             <span class="input-group-addon">Application name</span>
             <form:input path="applicationName" type="text" class="form-control" name="name"/>
@@ -104,7 +104,7 @@
               </div>
           </details> --%>
         <input class="btn btn-primary" style="bottom: 10px; right: 10px; position: absolute;" type="submit" value="Send"/>
-    </form:form>
+
 
     <!--<a class="btn btn-default" href="/sendtoftp" role="button">Send</a>-->
 
@@ -116,10 +116,12 @@
     <input class="btn btn-success btn-sm" type="button" value="New Item" id="addfields"/>
 </div>
 <div class="add_options" style="top: 20px;">
-    <input type="text" class="form-control" placeholder="Server..." value="${server}">
-    <input  type="text" class="form-control" placeholder="User..." value="${username}">
-    <input  type="password" class="form-control" placeholder="Password..." value="${pass}">
+    <input type="text" class="form-control" placeholder="Server..." name="sendInfo.server">
+    <input  type="text" class="form-control" placeholder="User..." name="sendInfo.username">
+    <input  type="password" class="form-control" placeholder="Password..." name="sendInfo.password">
+    <input  type="text" class="form-control" placeholder="Client email..." name="sendInfo.cl_email">
 </div>
+</form:form>
 <%--<script>
     function addfields() {
         var p = d.createElement('details');

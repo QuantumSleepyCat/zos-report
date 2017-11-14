@@ -36,4 +36,15 @@ public class DataSet {
     public void setMembers(List<String> members) {
         this.members = members;
     }
+
+    @Override
+    public int hashCode() {
+        int code = (int) ((itemValue.length()+itemRemark.length())*(Math.random()*121));
+        for(String member : members)
+        {
+            int membCode = member.length()*12342;
+            code+=membCode;
+        }
+        return code;
+    }
 }

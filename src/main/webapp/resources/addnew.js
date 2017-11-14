@@ -52,7 +52,7 @@ function addfields() {
     return false;
 }
 var d = document,
-    myForm = d.getElementById('mainForm'),
+    myForm = d.getElementById('input_form'),
     butAdd = d.getElementById('addfields'),
     countMain=0;
 butAdd.addEventListener('click', addfields, false);

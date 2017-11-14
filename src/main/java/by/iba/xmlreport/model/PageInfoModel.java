@@ -1,5 +1,9 @@
 package by.iba.xmlreport.model;
 
+
+
+import by.iba.xmlreport.model.sendinfo.SendInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +14,15 @@ public class PageInfoModel {
     private String transferDate;
     private String region;
     private List<Item> items= new ArrayList<>();
+    private SendInfo sendInfo = new SendInfo();
+
+    public SendInfo getSendInfo() {
+        return sendInfo;
+    }
+
+    public void setSendInfo(SendInfo sendInfo) {
+        this.sendInfo = sendInfo;
+    }
 
     public String getRegion() {
         return region;
@@ -63,5 +76,16 @@ public class PageInfoModel {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    @Override
+    public int hashCode() {
+        int code = (int) ((applicationName.length()*prodect_CR_ID.length()*requester.length()*
+                        transferDate.length()*region.length())*(Math.random()*123));
+        for(Item item:items)
+        {
+            code+=item.hashCode()*(Math.random()*323+232);
+        }
+        return code+sendInfo.hashCode();
     }
 }
