@@ -3,6 +3,7 @@ package by.iba.xmlreport.model.DTO;
 import org.w3c.dom.Document;
 
 public class JCLAndXMLDoc {
+    private int idStat;
     private String jclText;
     private Document xmlDocument;
 
@@ -12,6 +13,14 @@ public class JCLAndXMLDoc {
     public JCLAndXMLDoc(String jclText, Document xmlDocument) {
         this.jclText = jclText;
         this.xmlDocument = xmlDocument;
+    }
+
+    public int getIdStat() {
+        return idStat;
+    }
+
+    public void setIdStat(int idStat) {
+        this.idStat = idStat;
     }
 
     public String getJclText() {

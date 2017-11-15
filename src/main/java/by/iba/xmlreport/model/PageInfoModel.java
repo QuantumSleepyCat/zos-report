@@ -8,13 +8,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PageInfoModel {
+    private int id;
     private String applicationName;
     private String prodect_CR_ID;
     private String requester;
     private String transferDate;
     private String region;
+    private String host;
+    private int port;
     private List<Item> items= new ArrayList<>();
     private SendInfo sendInfo = new SendInfo();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
 
     public SendInfo getSendInfo() {
         return sendInfo;

@@ -21,3 +21,9 @@
     width: 27%;
     padding: 2%;
 }
+
+.statusbar
+{
+    padding: 2%;
+    position: relative;
+}
