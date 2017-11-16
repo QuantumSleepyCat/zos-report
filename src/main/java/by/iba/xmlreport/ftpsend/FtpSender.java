@@ -23,7 +23,6 @@ public class FtpSender {
         try {
             client.connect("172.20.2.116");
             client.login("user06a", "user06a");
-
             String filename = "xml.data.txt";
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();

@@ -4,6 +4,7 @@ package by.iba.xmlreport.controllers;
 import by.iba.xmlreport.ftpsend.FtpSender;
 import by.iba.xmlreport.model.DTO.JCLAndXMLDoc;
 import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
+import by.iba.xmlreport.model.result.RejectResult;
 import by.iba.xmlreport.model.statuslist.StatusBarList;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,22 +17,21 @@ public class ResultController {
     {
         StatusBarList.getInstance().getStatusItems().get(
                 jclAndXMLDoc.getIdStat()
-        ).setStyleClass("list-group-item list-group-item-success");
-        StatusBarList.getInstance().getStatusItems().get(
-                jclAndXMLDoc.getIdStat()
-        ).setStatus("Approved");
+        ).setStyleClass("list-group-item list-group-item-success")
+        .setStatus("Approved")
+        .setComment(jclAndXMLDoc.getComment());
         FtpSender ftpSender=new FtpSender();
         ftpSender.sendFileToZos(jclAndXMLDoc.getXmlDocument(),
                 new CreatingJCLFile().createJclFile(jclAndXMLDoc.getJclText()));
     }
 
     @PostMapping("/result/reject")
-    public void getResultReject(@RequestBody int id)
+    public void getResultReject(@RequestBody RejectResult rejectResult)
     {
-        StatusBarList.getInstance().getStatusItems().get(id)
-                .setStyleClass("list-group-item list-group-item-success");
-        StatusBarList.getInstance().getStatusItems().get(id)
-                .setStatus("Rejected");
+        StatusBarList.getInstance().getStatusItems().get(rejectResult.getId())
+                .setStyleClass("list-group-item list-group-item-danger")
+                .setStatus("Rejected")
+                .setComment(rejectResult.getComment());
     }
 
 }

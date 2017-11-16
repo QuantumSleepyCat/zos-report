@@ -27,3 +27,10 @@
     padding: 2%;
     position: relative;
 }
+
+#status
+{
+    right: 10px;
+    position: absolute;
+    color: green;
+}

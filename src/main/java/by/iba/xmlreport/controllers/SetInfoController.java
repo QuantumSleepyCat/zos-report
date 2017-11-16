@@ -43,8 +43,9 @@ public class SetInfoController {
         restTemplate.postForLocation("http://localhost:9081/rest/getinfo",
                 pageInfo);
 
-        StatusBarList.getInstance().setItem(new StatusItem(pageInfo.getApplicationName(),
-                "Awaiting","list-group-item list-group-item-info"),pageInfo.getId());
+        StatusBarList.getInstance().setItem(new StatusItem(pageInfo.getId(),pageInfo.getApplicationName(),
+                "Awaiting","list-group-item list-group-item-info",
+                pageInfo.getSendInfo().getUsername(),"No comment"),pageInfo.getId());
         model.setViewName("redirect:/");
         return model;
     }

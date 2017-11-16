@@ -6,6 +6,15 @@ public class JCLAndXMLDoc {
     private int idStat;
     private String jclText;
     private Document xmlDocument;
+    private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public JCLAndXMLDoc() {
     }

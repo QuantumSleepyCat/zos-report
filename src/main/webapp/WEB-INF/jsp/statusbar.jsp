@@ -17,7 +17,7 @@
 <div class="statusbar">
     <ul class="list-group">
         <c:forEach items="${statusList}" var="status">
-        <li class="${status.styleClass}">${status.appName} Status: ${status.status}</li>
+        <li class="${status.styleClass}">${status.appName}<span id="status">Status: ${status.status}  Initiator:${status.initiator}</span></li>
         </c:forEach>
     </ul>
 </div>

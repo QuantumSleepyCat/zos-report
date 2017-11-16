@@ -1,9 +1,21 @@
 package by.iba.xmlreport.model.statuslist.item;
 
 public class StatusItem {
+    private int id;
     private String appName;
     private String status;
     private String styleClass;
+    private String initiator;
+    private String comment;
+
+    public StatusItem(int id, String appName, String status, String styleClass, String initiator, String comment) {
+        this.id = id;
+        this.appName = appName;
+        this.status = status;
+        this.styleClass = styleClass;
+        this.initiator = initiator;
+        this.comment = comment;
+    }
 
     public StatusItem(String appName, String status, String styleClass) {
         this.appName = appName;
@@ -11,7 +23,32 @@ public class StatusItem {
         this.styleClass = styleClass;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public StatusItem setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
     public StatusItem() {
+    }
+
+    public String getInitiator() {
+        return initiator;
+    }
+
+    public void setInitiator(String initiator) {
+        this.initiator = initiator;
     }
 
     public String getAppName() {
@@ -26,16 +63,18 @@ public class StatusItem {
         return status;
     }
 
-    public void setStatus(String status) {
+    public StatusItem setStatus(String status) {
         this.status = status;
+        return this;
     }
 
     public String getStyleClass() {
         return styleClass;
     }
 
-    public void setStyleClass(String styleClass) {
+    public StatusItem setStyleClass(String styleClass) {
         this.styleClass = styleClass;
+        return this;
     }
 
     @Override
