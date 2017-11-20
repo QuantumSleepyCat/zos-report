@@ -1,5 +1,6 @@
 package by.iba.xmlreport.ftpsend;
 
+import by.iba.xmlreport.model.sendinfo.SendInfo;
 import org.apache.commons.net.ftp.FTPClient;
 import org.w3c.dom.Document;
 
@@ -15,14 +16,16 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 public class FtpSender {
-    public boolean sendFileToZos(Document document, File jclFile)
+    public boolean sendFileToZos(Document document, File jclFile, SendInfo sendInfo)
     {
         FTPClient client = new FTPClient();
         FileInputStream fis = null;
         FileInputStream fisForJCL = null;
         try {
-            client.connect("172.20.2.116");
-            client.login("user06a", "user06a");
+           // client.connect("172.20.2.116");
+            client.connect(sendInfo.getServer());
+            //client.login("user06a", "user06a");
+            client.login(sendInfo.getUsername(), sendInfo.getPassword());
             String filename = "xml.data.txt";
             Transformer transformer = TransformerFactory.newInstance()
                     .newTransformer();

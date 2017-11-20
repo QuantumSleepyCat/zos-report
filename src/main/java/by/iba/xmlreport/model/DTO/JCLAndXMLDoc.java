@@ -1,5 +1,6 @@
 package by.iba.xmlreport.model.DTO;
 
+import by.iba.xmlreport.model.sendinfo.SendInfo;
 import org.w3c.dom.Document;
 
 public class JCLAndXMLDoc {
@@ -7,6 +8,15 @@ public class JCLAndXMLDoc {
     private String jclText;
     private Document xmlDocument;
     private String comment;
+    private SendInfo sendInfo;
+
+    public SendInfo getSendInfo() {
+        return sendInfo;
+    }
+
+    public void setSendInfo(SendInfo sendInfo) {
+        this.sendInfo = sendInfo;
+    }
 
     public String getComment() {
         return comment;
@@ -19,9 +29,10 @@ public class JCLAndXMLDoc {
     public JCLAndXMLDoc() {
     }
 
-    public JCLAndXMLDoc(String jclText, Document xmlDocument) {
+    public JCLAndXMLDoc(String jclText, Document xmlDocument, SendInfo sendInfo) {
         this.jclText = jclText;
         this.xmlDocument = xmlDocument;
+        this.sendInfo=sendInfo;
     }
 
     public int getIdStat() {

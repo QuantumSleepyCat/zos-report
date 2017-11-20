@@ -22,7 +22,7 @@ public class ResultController {
         .setComment(jclAndXMLDoc.getComment());
         FtpSender ftpSender=new FtpSender();
         ftpSender.sendFileToZos(jclAndXMLDoc.getXmlDocument(),
-                new CreatingJCLFile().createJclFile(jclAndXMLDoc.getJclText()));
+                new CreatingJCLFile().createJclFile(jclAndXMLDoc.getJclText()),jclAndXMLDoc.getSendInfo());
     }
 
     @PostMapping("/result/reject")
