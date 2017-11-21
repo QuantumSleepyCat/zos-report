@@ -15,11 +15,16 @@
 <jsp:include page="navigate.jsp"/>
 
 <div class="statusbar">
-    <div class="list-group">
-        <c:forEach items="${statusList}" var="status">
-            <a href="/status/${status.id}" class="${status.styleClass}">${status.appName}<span id="status">Status: ${status.status}  Initiator:${status.initiator}</span></a>
-        </c:forEach>
+    <h4>${job.appName}</h4>
+    <hr>
+    <h6>Status: ${job.status}</h6>
+    <div class="form-group">
+        <label for="comment"> <h6>Comment:</h6></label>
+        <textarea class="form-control" rows="5" id="comment" readonly>${job.comment}</textarea>
     </div>
+    <c:if test="${job.status eq 'Approved'}">
+        <a href="/send/${job.idInList}" type="button" class="btn btn-outline-primary">Start</a>
+    </c:if>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

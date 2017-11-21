@@ -2,6 +2,7 @@ package by.iba.xmlreport.model.statuslist.item;
 
 public class StatusItem {
     private int id;
+    private int idInList;
     private String appName;
     private String status;
     private String styleClass;
@@ -21,6 +22,15 @@ public class StatusItem {
         this.appName = appName;
         this.status = status;
         this.styleClass = styleClass;
+    }
+
+    public int getIdInList() {
+        return idInList;
+    }
+
+    public StatusItem setIdInList(int idInList) {
+        this.idInList = idInList;
+        return this;
     }
 
     public int getId() {

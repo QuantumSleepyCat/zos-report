@@ -7,18 +7,18 @@ function addfields() {
    // p.innerHTML=' <summary>Item for promote</summary>';
     html+='<summary>Item for promote</summary>'+
         '<div class="input-group" style="margin-bottom: 10px;">' +
-    '                <span class="input-group-addon">Item name</span>' +
+    '                <span class="input-group-addon">Process name</span>' +
     '                <input name="items['+countMain+'].name" type="text" class="form-control"/>' +
     '            </div>';
     for(var i=0;i<countDataSets;i++)
     {
         html+='' +
         '            <br/><div class="input-group" style="margin-bottom: 10px;">' +
-        '                <span class="input-group-addon">Item value</span>' +
+        '                <span class="input-group-addon">Source dataset</span>' +
         '                <input  name="items['+countMain+'].dataSets['+i+'].itemValue" type="text" class="form-control"/>' +
         '            </div>' +
         '            <div class="input-group" style="margin-bottom: 10px;">' +
-        '                <span class="input-group-addon">Item remark</span>' +
+        '                <span class="input-group-addon">Target dataset</span>' +
         '                <input name="items['+countMain+'].dataSets['+i+'].itemRemark" type="text" class="form-control"/>' +
         '            </div>';
         for(var j=0; j<countMembers; j++)

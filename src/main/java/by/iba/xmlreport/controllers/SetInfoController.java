@@ -40,11 +40,11 @@ public class SetInfoController {
         RestTemplate restTemplate = new RestTemplate();
         StatusBarList.getInstance().iterCounter();
         pageInfo.setId(StatusBarList.getInstance().getCounter());
-        restTemplate.postForLocation("http://localhost:9081/rest/getinfo",
+        restTemplate.postForLocation("https://xml-creator-for-zos.eu-gb.mybluemix.net/rest/getinfo",
                 pageInfo);
 
         StatusBarList.getInstance().setItem(new StatusItem(pageInfo.getId(),pageInfo.getApplicationName(),
-                "Awaiting","list-group-item list-group-item-info",
+                "Awaiting","list-group-item list-group-item-action list-group-item-info",
                 pageInfo.getSendInfo().getUsername(),"No comment"),pageInfo.getId());
         model.setViewName("redirect:/");
         return model;
