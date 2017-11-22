@@ -4,6 +4,7 @@ package by.iba.xmlreport.controllers;
 
 import by.iba.xmlreport.ftpsend.FtpSender;
 import by.iba.xmlreport.model.DTO.JCLAndXMLDoc;
+import by.iba.xmlreport.model.HostInfo;
 import by.iba.xmlreport.model.PageInfoModel;
 import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
 import by.iba.xmlreport.model.sendinfo.SendInfo;
@@ -40,7 +41,7 @@ public class SetInfoController {
         RestTemplate restTemplate = new RestTemplate();
         StatusBarList.getInstance().iterCounter();
         pageInfo.setId(StatusBarList.getInstance().getCounter());
-        restTemplate.postForLocation("https://xml-creator-for-zos.eu-gb.mybluemix.net/rest/getinfo",
+        restTemplate.postForLocation(HostInfo.getHost()+"rest/getinfo",
                 pageInfo);
 
         StatusBarList.getInstance().setItem(new StatusItem(pageInfo.getId(),pageInfo.getApplicationName(),
