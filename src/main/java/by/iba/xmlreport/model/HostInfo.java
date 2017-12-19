@@ -1,7 +1,7 @@
 package by.iba.xmlreport.model;
 
 public class HostInfo {
-    private static String host="https://xml-creator-for-zos.eu-gb.mybluemix.net/";
+    private static String host="http://localhost:9081/";
 
     public static String getHost()
     {

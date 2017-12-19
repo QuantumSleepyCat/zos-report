@@ -10,6 +10,9 @@ import by.iba.xmlreport.model.jclcreate.CreatingJCLFile;
 import by.iba.xmlreport.model.sendinfo.SendInfo;
 import by.iba.xmlreport.model.statuslist.StatusBarList;
 import by.iba.xmlreport.model.statuslist.item.StatusItem;
+import by.iba.xmlreport.services.jms.JmsServiceSend;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +27,17 @@ import java.io.File;
 @Controller
 public class SetInfoController {
 
+	@Autowired
+	private JmsServiceSend jmsServiceSend;
+	
     @GetMapping(value = "/")
     public String setInfoPage(Model model)
     {
        //model.addAttribute("message","test message");
+    	//jmsServiceSend.send();
         model.addAttribute("pageInfo",new PageInfoModel());
-        return "index";
+       return "index";
+        //return "test";
     }
 
 
