@@ -1,10 +1,15 @@
 package by.iba.xmlreport.jms;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.jms.BytesMessage;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +26,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.ibm.disthub2.client.Listener;
 import com.ibm.mq.jms.MQQueueConnectionFactory;
 import com.ibm.msg.client.wmq.WMQConstants;
+
+import by.iba.xmlreport.services.jms.listener.ListenerMQ;
+
 
 @Configuration
 @EnableTransactionManagement
@@ -41,6 +49,9 @@ public class JmsConfig {
     private String queue;
     @Value("${project.mq.receive-timeout}")
     private long receiveTimeout;*/
+	
+	@Autowired
+	private ListenerMQ listenerMQ;
 
     @Bean
     public MQQueueConnectionFactory mqQueueConnectionFactory() {
@@ -89,25 +100,9 @@ public class JmsConfig {
    {
 	   DefaultMessageListenerContainer container = new DefaultMessageListenerContainer();
 	   container.setConnectionFactory(cachingConnectionFactory);
-	   container.setDestinationName("TRIG.TEST.USER01C");
-	   container.setMessageListener(new MessageListener() {
-		
-		@Override
-		public void onMessage(Message arg0) {
-			// TODO Auto-generated method stub
-			if (arg0 instanceof TextMessage)
-	        {
-			try {
-				String str = ((TextMessage)arg0).getText();
-				System.out.println(str);
-			} catch (JMSException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        }
-			
-		}
-	});
+	   container.setDestinationName("TRIG.TEST.USER01A");
+	   container.setMessageListener(listenerMQ);
+	   //container.setMaxConcurrentConsumers(3);
 	   container.setSessionTransacted(true);
 	   return container;
    }
