@@ -10,6 +10,7 @@
           crossorigin="anonymous"/>
 
     <link rel="stylesheet" href="/resources/css/formStyle.css"/>
+    
 </head>
 <body>
 <jsp:include page="navigate.jsp"/>
@@ -25,7 +26,33 @@
     <c:if test="${job.status eq 'Approved'}">
         <a href="/send/${job.idInList}" type="button" class="btn btn-outline-primary">Start</a>
     </c:if>
+    <p>
+<a class="btn btn-outline-warning btn-sm" data-toggle="collapse" href="#linkcollapse" aria-expanded="false" aria-controls="Collapse">
+Logs
+</a>
+</p>
+<div class="collapse" id="linkcollapse">
+<div class="card card-block">
+<c:forEach items="${logs}" var="logPart" varStatus="logCounter">
+<a class="btn btn-outline-warning btn-sm" data-toggle="collapse" href="#linkcoll${logCounter.count}" aria-expanded="false" aria-controls="Collapse" style="margin-bottom: 5px;">Log ${logCounter.count} - ${logPart[2]}</a> 
+<div class="collapse" id="linkcoll${logCounter.count}">
+<div class="card card-block">
+<code>
+       <c:forEach items="${logPart}" var="line">
+        ${line}<br>
+       </c:forEach>
+            </code>
+            </div>
+            </div>
+            </c:forEach>
 </div>
+</div>
+    
+          
+    
+</div>
+
+
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

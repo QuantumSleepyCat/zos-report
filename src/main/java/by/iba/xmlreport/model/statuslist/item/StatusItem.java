@@ -8,14 +8,25 @@ public class StatusItem {
     private String styleClass;
     private String initiator;
     private String comment;
+    private String logs;
+    
+    
+    public String getLogs() {
+		return logs;
+	}
 
-    public StatusItem(int id, String appName, String status, String styleClass, String initiator, String comment) {
+	public void setLogs(String logs) {
+		this.logs = logs;
+	}
+
+	public StatusItem(int id, String appName, String status, String styleClass, String initiator, String comment) {
         this.id = id;
         this.appName = appName;
         this.status = status;
         this.styleClass = styleClass;
         this.initiator = initiator;
         this.comment = comment;
+        this.logs="No logs";
     }
 
     public StatusItem(String appName, String status, String styleClass) {
@@ -36,7 +47,7 @@ public class StatusItem {
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }

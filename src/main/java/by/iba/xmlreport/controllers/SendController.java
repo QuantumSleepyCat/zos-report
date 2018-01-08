@@ -28,10 +28,11 @@ public class SendController {
         ResponseEntity<JCLAndXMLDoc> responseEntity= restTemplate.getForEntity(
                 HostInfo.getHost()+"info/"+id,JCLAndXMLDoc.class);
         //sendInfo.send(responseEntity.getBody());
+        StatusBarList.getInstance().getStatusItems().get(responseEntity.getBody().getIdStat())
+        .setStyleClass("list-group-item list-group-item-action list-group-item-warning")
+        .setStatus("In process");
         jmsServiceSend.send(responseEntity.getBody());
-       StatusBarList.getInstance().getStatusItems().get(responseEntity.getBody().getIdStat())
-                .setStyleClass("list-group-item list-group-item-action list-group-item-dark")
-                .setStatus("Finished");
+       
         return "redirect:/";
     }
 

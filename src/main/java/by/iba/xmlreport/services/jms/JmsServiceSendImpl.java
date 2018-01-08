@@ -41,16 +41,26 @@ public class JmsServiceSendImpl implements JmsServiceSend{
 		
 		String filename = "xml.data.txt";
 		File file = new File(filename);
+		if(!file.exists())
+		{
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	    String out ="";
         Transformer transformer;
 		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			
 			transformer = TransformerFactory.newInstance()
 			        .newTransformer();			 
 		        DOMSource source = new DOMSource(jclAndXMLDoc.getXmlDocument());
 		        StreamResult result = new StreamResult(file);
 		        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 		        transformer.transform(source, result);
+		        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 		        while(bufferedReader.ready())
 		        {
 		        	out+=bufferedReader.readLine();

@@ -1,10 +1,15 @@
 package by.iba.xmlreport.controllers;
 
 
+import by.iba.xmlreport.controllers.logutils.GettingListLogs;
 import by.iba.xmlreport.model.HostInfo;
 import by.iba.xmlreport.model.status.StatusList;
 import by.iba.xmlreport.model.statuslist.StatusBarList;
 import by.iba.xmlreport.services.status.JobStatusValues;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +27,9 @@ public class StatusBarController {
     @Autowired
     private JobStatusValues jobStatusValues;
 
+    @Autowired
+    private GettingListLogs gettingListLogs;
+    
     @GetMapping
     public String getStatus(Model model)
     {
@@ -34,7 +42,14 @@ public class StatusBarController {
     public String getStatusJob(@PathVariable int id, Model model)
     {
         jobStatusValues.updateStatusById(id);
+        List<String[]> logList = new ArrayList<>();
+        String[] logParts = gettingListLogs.execute(StatusBarList.getInstance().getStatusItems().get(id).getLogs());
+        for(String logPart:logParts)
+        {
+        	logList.add(logPart.split("\n"));
+        }
         model.addAttribute("job",StatusBarList.getInstance().getStatusItems().get(id));
+        model.addAttribute("logs",logList);
         return "jobstatus";
     }
 }

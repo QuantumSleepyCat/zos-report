@@ -6,9 +6,11 @@ function addfields() {
     var html='';
    // p.innerHTML=' <summary>Item for promote</summary>';
     html+='<summary>Item for promote</summary>'+
-        '<div class="input-group" style="margin-bottom: 10px;">' +
-    '                <span class="input-group-addon">Process name</span>' +
-    '                <input name="items['+countMain+'].name" type="text" class="form-control"/>' +
+        '<div class="select-group" style="margin-bottom: 10px;">' +
+    '                <select name="items['+countMain+'].name" class="form-control"/ style="margin-top: 10px;">' +
+    '<option>Promote</option>'+
+    '<option>Compilation</option>'+
+    '</select>'+
     '            </div>';
     for(var i=0;i<countDataSets;i++)
     {

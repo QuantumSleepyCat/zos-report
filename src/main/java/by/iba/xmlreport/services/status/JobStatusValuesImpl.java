@@ -28,14 +28,16 @@ public class JobStatusValuesImpl implements JobStatusValues {
                         statusValue.getIdInfo()
                 );
                 if(statusValue.getStatus().equals("Approved") &&
-                        !statusItem.getStatus().equals("Finished"))
+                		!statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
+                        !statusItem.getStatus().equals("Failed"))
                 {
                     statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success")
                             .setStatus("Approved")
                             .setComment(statusValue.getComment());
                 }
             else if(statusValue.getStatus().equals("Rejected") &&
-                !statusItem.getStatus().equals("Finished"))
+            		!statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
+                    !statusItem.getStatus().equals("Failed"))
             {
                 statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger")
                         .setStatus("Rejected")
@@ -62,14 +64,16 @@ public class JobStatusValuesImpl implements JobStatusValues {
                      statusValue.getIdInfo()
              );
              if (statusValue.getStatus().equals("Approved") &&
-                     !statusItem.getStatus().equals("Finished")) {
+                     !statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
+                     !statusItem.getStatus().equals("Failed")) {
                  statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-success")
                          .setStatus("Approved")
                          .setComment(statusValue.getComment())
                          .setIdInList(statusValue.getIdInList());
                  System.out.println(statusValue.getComment());
              } else if (statusValue.getStatus().equals("Rejected") &&
-                     !statusItem.getStatus().equals("Finished")) {
+            		 !statusItem.getStatus().equals("Finished") && !statusItem.getStatus().equals("In process") &&
+                     !statusItem.getStatus().equals("Failed")) {
                  statusItem.setStyleClass("list-group-item list-group-item-action list-group-item-danger")
                          .setStatus("Rejected")
                          .setComment(statusValue.getComment());
